@@ -20,6 +20,6 @@ COPY --from=buildstage /app/target/tienda-0.0.1-SNAPSHOT.jar /app/bdget.jar
 COPY Wallet_ROP5KSUKVLN2GV0H /app/wallet
 
 ENV TNS_ADMIN=/app/wallet
-EXPOSE 8080
+EXPOSE 8181
 
 ENTRYPOINT [ "java", "-jar", "/app/bdget.jar" ]
