@@ -27,6 +27,8 @@ public class Product {
     @Size(max = 255, message = "La descripción no debe exceder los 255 caracteres")
     private String descripcion;
 
+    private String imagen;
+
     // Getters y Setters
     public Long getId() {
         return id;
@@ -58,5 +60,13 @@ public class Product {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }
