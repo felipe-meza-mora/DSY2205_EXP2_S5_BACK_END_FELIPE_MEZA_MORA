@@ -53,7 +53,11 @@ public User saveUser(User user) {
             user.setNombre(updatedUser.getNombre());
             user.setUsername(updatedUser.getUsername());
             user.setPassword(updatedUser.getPassword());
-            user.setRole(updatedUser.getRole());
+            user.setPermisos(updatedUser.getPermisos());
+            user.setRut(updatedUser.getRut());
+            user.setCorreo(updatedUser.getCorreo());
+            user.setTelefono(updatedUser.getTelefono());
+            user.setDireccionEnvio(updatedUser.getDireccionEnvio());
             return Optional.of(userRepository.save(user));
         }
         return Optional.empty();

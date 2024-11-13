@@ -30,9 +30,22 @@ public class User {
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$", message = "La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número")
     private String password;
 
-    @NotNull(message = "El rol no puede ser nulo")
-    @Pattern(regexp = "USER|ADMIN", message = "El rol debe ser USER o ADMIN")
-    private String role;
+    @NotNull(message = "El permiso no puede ser nulo")
+    @Pattern(regexp = "USER|ADMIN", message = "El permiso debe ser USER o ADMIN")
+    private String permisos;
+
+    @NotNull(message = "El RUT no puede ser nulo")
+    @Size(min = 7, max = 12, message = "El RUT debe tener entre 7 y 12 caracteres")
+    private String rut;
+
+    @NotNull(message = "El correo no puede ser nulo")
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "El correo debe ser válido")
+    private String correo;
+
+    private String telefono;
+
+    @NotNull(message = "La dirección de envío no puede ser nula")
+    private String direccionEnvio;
 
     // Getters y Setters
     public Long getId() {
@@ -67,11 +80,43 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getPermisos() {
+        return permisos;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setPermisos(String permisos) {
+        this.permisos = permisos;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccionEnvio() {
+        return direccionEnvio;
+    }
+
+    public void setDireccionEnvio(String direccionEnvio) {
+        this.direccionEnvio = direccionEnvio;
     }
 }
