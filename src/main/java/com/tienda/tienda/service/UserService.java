@@ -1,5 +1,6 @@
 package com.tienda.tienda.service;
 
+import com.tienda.tienda.model.Product;
 import com.tienda.tienda.model.User;
 import java.util.Optional;
 import java.util.List;
@@ -8,10 +9,7 @@ public interface UserService {
 
     // Método para guardar un usuario
     User saveUser(User user);
-    
-    // Método para obtener un usuario por su username
-    Optional<User> findByUsername(String username);
-    
+
     // Método para obtener todos los usuarios
     List<User> getAllUsers();
     
@@ -25,7 +23,7 @@ public interface UserService {
     Optional<User> updateUser(Long id, User updatedUser);
     
     // Método para el login
-    Optional<User> login(String username, String password);
+    Optional<User> login(String email, String password);
     
     // Método para verificar si un RUT ya está registrado
     boolean isRutRegistered(String rut);

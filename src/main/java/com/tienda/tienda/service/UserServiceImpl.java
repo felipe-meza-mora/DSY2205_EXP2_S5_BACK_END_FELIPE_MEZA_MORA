@@ -1,5 +1,6 @@
 package com.tienda.tienda.service;
 
+import com.tienda.tienda.model.Product;
 import com.tienda.tienda.model.User;
 import com.tienda.tienda.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
         return userRepository.save(user);
-    }
-
-    // Método para obtener un usuario por su username
-    @Override
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
     }
 
     // Método para obtener todos los usuarios
@@ -50,7 +45,6 @@ public class UserServiceImpl implements UserService {
         if (existingUser.isPresent()) {
             User user = existingUser.get();
             user.setNombre(updatedUser.getNombre());
-            user.setUsername(updatedUser.getUsername());
             user.setPassword(updatedUser.getPassword());
             user.setPermisos(updatedUser.getPermisos());
             user.setRut(updatedUser.getRut());
@@ -64,8 +58,8 @@ public class UserServiceImpl implements UserService {
 
     // Método para el login
     @Override
-    public Optional<User> login(String username, String password) {
-        Optional<User> user = userRepository.findByUsername(username);
+    public Optional<User> login(String email, String password) {
+        Optional<User> user = userRepository.findByCorreo(email);
         if (user.isPresent() && user.get().getPassword().equals(password)) {
             return user;
         }
