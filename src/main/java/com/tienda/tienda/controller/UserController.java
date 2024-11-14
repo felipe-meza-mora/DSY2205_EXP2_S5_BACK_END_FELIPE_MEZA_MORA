@@ -76,15 +76,14 @@ public class UserController {
 
     // Endpoint para el login
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User loginRequest) {
-        Optional<User> user = userService.login(loginRequest.getNombre(), loginRequest.getPassword());
+    public ResponseEntity<User> login(@RequestBody User loginRequest) {
+        Optional<User> user = userService.login(loginRequest.getCorreo(), loginRequest.getPassword());
         if (user.isPresent()) {
-            return ResponseEntity.ok("Login exitoso para el usuario: " + user.get().getNombre());
+            return ResponseEntity.ok(user.get());
         } else {
-            return ResponseEntity.status(401).body("Credenciales inválidas");
+            return ResponseEntity.status(401).build();
         }
     }
-
     // Endpoint para verificar si el RUT está registrado
     @PostMapping("/check-rut")
     public ResponseEntity<Boolean> isRutRegistered(@RequestBody Map<String, String> requestBody) {
