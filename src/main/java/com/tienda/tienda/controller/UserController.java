@@ -81,7 +81,7 @@ public class UserController {
         if (user.isPresent()) {
             return ResponseEntity.ok(user.get());
         } else {
-            return ResponseEntity.status(401).body(null); // Devuelve null para evitar mostrar mensajes en texto plano.
+            return ResponseEntity.status(401).body(null);
         }
     }
     // Endpoint para verificar si el RUT está registrado
