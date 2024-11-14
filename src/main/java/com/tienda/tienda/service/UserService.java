@@ -1,6 +1,5 @@
 package com.tienda.tienda.service;
 
-import com.tienda.tienda.model.Product;
 import com.tienda.tienda.model.User;
 import java.util.Optional;
 import java.util.List;

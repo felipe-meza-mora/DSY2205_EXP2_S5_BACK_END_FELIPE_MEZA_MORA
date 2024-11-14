@@ -1,6 +1,5 @@
 package com.tienda.tienda.service;
 
-import com.tienda.tienda.model.Product;
 import com.tienda.tienda.model.User;
 import com.tienda.tienda.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package com.tienda.tienda.controller;
 
-import com.tienda.tienda.model.Product;
 import com.tienda.tienda.model.User;
 import com.tienda.tienda.service.UserService;
 
