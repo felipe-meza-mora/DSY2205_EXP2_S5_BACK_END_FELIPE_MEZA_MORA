@@ -23,9 +23,11 @@ public class UserController {
 
     // Endpoint para registrar un usuario
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@Valid @RequestBody User user) {
+    public ResponseEntity<Map<String, String>> registerUser(@Valid @RequestBody User user) {
         User savedUser = userService.saveUser(user);
-        return ResponseEntity.ok("Usuario añadido correctamente: " + savedUser.getNombre());
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Usuario añadido correctamente: " + savedUser.getNombre());
+        return ResponseEntity.ok(response);
     }
 
     // Endpoint para obtener el usuario por id
