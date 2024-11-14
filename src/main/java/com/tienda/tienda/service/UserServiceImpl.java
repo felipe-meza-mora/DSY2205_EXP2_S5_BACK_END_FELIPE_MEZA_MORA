@@ -13,31 +13,30 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    
     // Método para guardar un usuario
     @Override
-public User saveUser(User user) {
-    return userRepository.save(user);
-}
-    
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
     // Método para obtener un usuario por su username
     @Override
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-    
+
     // Método para obtener todos los usuarios
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-    
+
     // Método para obtener un usuario por su id
     @Override
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
     }
-    
+
     // Método para eliminar un usuario
     @Override
     public void deleteUser(Long id) {
@@ -62,15 +61,39 @@ public User saveUser(User user) {
         }
         return Optional.empty();
     }
-    
+
     // Método para el login
     @Override
     public Optional<User> login(String username, String password) {
-
         Optional<User> user = userRepository.findByUsername(username);
         if (user.isPresent() && user.get().getPassword().equals(password)) {
             return user;
         }
         return Optional.empty();
+    }
+
+    // Método para verificar si un RUT ya está registrado
+    @Override
+    public boolean isRutRegistered(String rut) {
+        return userRepository.findByRut(rut).isPresent();
+    }
+
+    // Método para verificar si un correo electrónico ya está registrado
+    @Override
+    public boolean isEmailRegistered(String email) {
+        return userRepository.findByCorreo(email).isPresent();
+    }
+
+    // Método para actualizar la contraseña de un usuario
+    @Override
+    public boolean updatePassword(String email, String newPassword) {
+        Optional<User> user = userRepository.findByCorreo(email);
+        if (user.isPresent()) {
+            User userToUpdate = user.get();
+            userToUpdate.setPassword(newPassword);
+            userRepository.save(userToUpdate);
+            return true;
+        }
+        return false;
     }
 }
